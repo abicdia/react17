@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './ShoppingCar.module.css';
+import {FiShoppingCart} from 'react-icons/fi'
 interface Props {}
 interface State {
   isOpen: boolean;
@@ -19,14 +20,14 @@ class ShoppingCar extends React.Component<Props, State> {
   // };
   // 使用箭头函数
   handleClick = (e) => {
-    console.log(e.target, e.currentTarget);
+    console.log('target',e.target,'currentTarget', e.currentTarget);
     this.setState({ isOpen: !this.state.isOpen });
   };
   render() {
     return (
       <div className={styles.cartContainer}>
         <button className={styles.button} onClick={this.handleClick}>
-          购物车 2 (件)
+         <span><FiShoppingCart></FiShoppingCart></span> 购物车 2 (件)
         </button>
         <div
           className={styles.cartDropDown}
