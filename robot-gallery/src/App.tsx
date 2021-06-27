@@ -2,6 +2,7 @@ import Reactm, { useState, useEffect } from 'react';
 import style from './App.module.css';
 import robots from './mockdata/robots.json';
 import Robot from './components/Robot';
+import RobotDiscount from './components/Robotdiscount';
 import ShoppingCar from './components/ShoppingCar';
 import logo from './assets/images/logo.svg';
 
@@ -43,14 +44,12 @@ const App: React.FC = (props) => {
         点击
       </button>
       <span>{count}</span>
-      {(!error || error!=="" ) && <p>网站出错：{error}</p>}
+      {(!error || error !== '') && <p>网站出错：{error}</p>}
 
       <ShoppingCar></ShoppingCar>
       {!loading ? (
         <div className={style.robotList}>
-          {robotGallery.map((r) => (
-            <Robot key={r.id} id={r.id} name={r.name} email={r.email}></Robot>
-          ))}
+          {robotGallery.map((r, index) => (index % 2 == 0 ? <RobotDiscount key={r.id} id={r.id} name={r.name} email={r.email}></RobotDiscount> : <Robot key={r.id} id={r.id} name={r.name} email={r.email}></Robot>))}
         </div>
       ) : (
         <h2>loading</h2>
